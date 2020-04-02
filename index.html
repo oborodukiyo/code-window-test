@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" leleintegrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Noto+Sans+JP:400,700,900|Noto+Serif+JP:400,700,900|PT+Sans:400,700|PT+Serif:400,700&display=swap" rel="stylesheet">
+
+    <!-- Google Code Prettify-->
+    <link rel="stylesheet" type="text/css" href="tranquil-heart.css">
+    <script type="text/javascript" src="prettify.js"></script>
+
+    <!-- Chart.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+    <title>Code Window Test</title>
+</head>
+<body onload="PR.prettyPrint()">
+    <div class="container">
+        <p>
+            フィボナッチ数列を考えてみましょう。これは0と1から始まる数列で、前の2つの数を足したものが次の数になるという規則性を持っています。<br>
+            0 1 1 2 3 5 8 13 21 34 55 89 ... <br>
+            再帰を使う実装の１つは次のようになります。<br>
+        </p>
+<pre class="prettyprint linenums"><code>// n番目のフィボナッチ数を返します。
+int fibonacciNumber(unsigned int n){
+    if(n == 0) return 0;
+    if(n == 1) return 1;
+    return fibonacciNumber(n - 1) + fibonacciNumber(n - 2);
+}
+</code></pre>
+
+<pre class="prettyprint linenums"><code>// isSquareRootCloseEnough(a,b)は、近似精度が0.01未満であればtrueを返し、0.01％以上であればfalseを返す関数です。
+bool isSquareRootCloseEnough(double a, double b){
+    // Answer is within 0.01%
+    // 精度は0.01未満になる必要があります。
+    // abs(x)は、xの絶対値を返します。
+    return abs(a/b - b) < (b * 0.0001)
+}
+
+// guessを入力として受け取り、x / guess ≈ guess を計算します。
+double squareRootHelper(double x, double guess){
+    if(isSquareRootCloseEnough(x,guess)) return guess;
+    return squareRootHelper(x,(guess + x/guess)/2);
+}
+
+double squareRoot(double x){
+    // guessを1からスタートします
+    return squareRootHelper(x, 1);
+}
+
+cout << squareRoot(65) << endl; // 8.06226
+</code></pre>
+    </div>
+    </body>
+</html>
